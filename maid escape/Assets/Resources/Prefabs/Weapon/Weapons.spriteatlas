@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Weapons
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 794705478, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1068654824, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1917909307, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1407143292, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1004355669, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1176779528, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1728657502, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1397048289, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -623230273, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1406481665, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -601575331, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1123720188, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -809207180, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1362695893, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1331917128, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -186079068, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1228364453, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1062690197, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -702110503, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 2041169698, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -921697559, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1152151010, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1326322265, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -2108259974, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1881710698, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 911503877, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -677455843, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -5415552, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1302710675, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1968654040, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 477820754, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1988628334, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1617245041, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 174311420, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1167940171, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -1471785564, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 746900728, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -899439741, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -561821565, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1549248365, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1249287476, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -534021596, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 2000505834, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: -499105863, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  - {fileID: 1895097803, guid: 65bcb1392be0ae340a12188ac8dfdc6c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - bronze outline x4_20
+  - bronze outline x4_21
+  - bronze outline x4_22
+  - bronze outline x4_23
+  - bronze outline x4_33
+  - bronze outline x4_24
+  - bronze outline x4_25
+  - bronze outline x4_31
+  - bronze outline x4_26
+  - bronze outline x4_30
+  - bronze outline x4_27
+  - bronze outline x4_37
+  - bronze outline x4_28
+  - bronze outline x4_36
+  - bronze outline x4_29
+  - bronze outline x4_35
+  - bronze outline x4_19
+  - bronze outline x4_34
+  - bronze outline x4_18
+  - bronze outline x4_39
+  - bronze outline x4_38
+  - bronze outline x4_11
+  - bronze outline x4_13
+  - bronze outline x4_12
+  - bronze outline x4_15
+  - bronze outline x4_14
+  - bronze outline x4_17
+  - bronze outline x4_16
+  - normal_Dagger
+  - bronze outline x4_42
+  - bronze outline x4_43
+  - bronze outline x4_40
+  - bronze outline x4_41
+  - bronze outline x4_44
+  - bronze outline x4_2
+  - bronze outline x4_3
+  - bronze outline x4_1
+  - bronze outline x4_6
+  - bronze outline x4_7
+  - bronze outline x4_4
+  - bronze outline x4_5
+  - bronze outline x4_8
+  - bronze outline x4_9
+  - normal_Bow
+  - normal_Sword
+  m_RenderDataMap: {}
+  m_Tag: Weapons
+  m_IsVariant: 0

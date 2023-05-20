@@ -1,0 +1,23 @@
+[
+ {
+  "id": 101,
+  "type": "weapon",
+  "name": "일반_칼",
+  "spriteName": "normal_Sword",
+  "info": "\"지나가는 아이도 다룰 수 있는 조잡한 검입니다\""
+ },
+ {
+  "id": 102,
+  "type": "weapon",
+  "name": "일반_대거",
+  "spriteName": "normal_Dagger",
+  "info": "\"지나가는 아이도 다룰 수 있는 조잡한 단검입니다\""
+ },
+ {
+  "id": 103,
+  "type": "weapon",
+  "name": "일반_활",
+  "spriteName": "normal_Bow",
+  "info": "\"지나가는 아이도 다룰 수 있는 조잡한 활입니다\""
+ }
+]
