@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8accb9125f8f5a34b84aab25f4f2ec14, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e6a1b796a3c4e3418f96eac91f2ac40, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -381,12 +381,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1388117885}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 215, y: 65}
-  m_SizeDelta: {x: 500, y: 50}
+  m_AnchoredPosition: {x: 215, y: 85}
+  m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1212514731
 MonoBehaviour:
@@ -410,8 +410,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uB85C\uB529\uC911 \uC785\uB2C8\uB2E4"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 27605d83330574f4e82bab5de3f30ce0, type: 2}
-  m_sharedMaterial: {fileID: 745052430329452087, guid: 27605d83330574f4e82bab5de3f30ce0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 037b1ee59bba8254f9676e207b74fe2a, type: 2}
+  m_sharedMaterial: {fileID: 745052430329452087, guid: 037b1ee59bba8254f9676e207b74fe2a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -514,8 +514,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1404508142}
-  - {fileID: 1440673765}
   - {fileID: 1212514730}
+  - {fileID: 1440673765}
   m_Father: {fileID: 1513561131}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -648,7 +648,7 @@ RectTransform:
   m_Children:
   - {fileID: 455858629}
   m_Father: {fileID: 1388117885}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -675,8 +675,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 24ff7e9354a737548866e19352bf6239, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 59bd73317e0a4a441ba9c838bdf26198, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -820,7 +820,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513561127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 064556a4987d8cc4883314705ce6a149, type: 3}
+  m_Script: {fileID: 11500000, guid: 69b5eb266ace8364eac37db497c4397c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loadStateDesc: {fileID: 1212514731}
