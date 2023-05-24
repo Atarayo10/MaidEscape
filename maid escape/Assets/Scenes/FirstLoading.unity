@@ -387,11 +387,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 389762450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3b7075296b7e544a6353e4df93a799, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b2794d5866538647902419223602b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadStateDesc: {fileID: 1890373611}
-  loadFillGauge: {fileID: 2101551284}
+  loadStateDesc: {fileID: 0}
+  loadFillGauge: {fileID: 0}
 --- !u!1 &460137918
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,8 +491,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Maid Escape
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 27605d83330574f4e82bab5de3f30ce0, type: 2}
-  m_sharedMaterial: {fileID: 745052430329452087, guid: 27605d83330574f4e82bab5de3f30ce0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -776,7 +776,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1610327127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fca5f0f402a552d41b845183130f17ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b8608010dca7304195de6d95fe2739b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   loadProgress: 0
@@ -908,8 +908,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC0C1\uD0DC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 27605d83330574f4e82bab5de3f30ce0, type: 2}
-  m_sharedMaterial: {fileID: 745052430329452087, guid: 27605d83330574f4e82bab5de3f30ce0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2031653171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0323d58e80b8dc14daca04a71be095f3, type: 3}
+  m_Script: {fileID: 11500000, guid: d84397a2f311b944cbc64facf1e5e4cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiStart: {fileID: 389762455}

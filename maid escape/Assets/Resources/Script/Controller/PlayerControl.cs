@@ -154,20 +154,20 @@ public class PlayerControl : MonoBehaviour
             //경사로 이동
             if (isSlope && isGround && !isJump && angle < maxSlopeAngle)
             {
-                Vector2 t = new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
-                                perp.y * maxSpeed * -Horizontal * Time.deltaTime);
+                //Vector2 t = new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
+                               // perp.y * maxSpeed * -Horizontal * Time.deltaTime);
                 rg.velocity = Vector2.zero;
                 if (Horizontal > 0)
                 {
-                    //transform.Translate(new Vector2(perp.x * maxSpeed * -Horizontal * Time.deltaTime,
-                    //    perp.y * maxSpeed * -Horizontal * Time.deltaTime));
-                    transform.Translate(-t);
+                    transform.Translate(new Vector2(perp.x * maxSpeed * -Horizontal * Time.deltaTime,
+                        perp.y * maxSpeed * -Horizontal * Time.deltaTime));
+                    //transform.Translate(-t);
                 }
                 else if (Horizontal < 0)
                 {
-                    transform.Translate(t);
-                    //transform.Translate(new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
-                    //    perp.y * maxSpeed * -Horizontal * Time.deltaTime));
+                    //transform.Translate(t);
+                    transform.Translate(new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
+                        perp.y * maxSpeed * -Horizontal * Time.deltaTime));
                 }
             }
             //땅 이동
