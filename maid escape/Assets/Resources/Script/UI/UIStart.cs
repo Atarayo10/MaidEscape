@@ -9,33 +9,33 @@ namespace MaidEscape.UI
     public class UIStart : MonoBehaviour
     {
         // Public
-        public TextMeshProUGUI loadStateDesc;   // ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®
-        public Image loadFillGauge;             // ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½
+        public TextMeshProUGUI loadStateDesc;   // ·Îµù¹Ù ÅØ½ºÆ®
+        public Image loadFillGauge;             // ·Îµù¹Ù ÀÌ¹ÌÁö
 
         // Private
-        private Image backImage;                // ï¿½ï¿½ ï¿½ï¿½
+        private Image backImage;                // ÄÆ ¾À
 
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+        /// ÇöÀç ÁøÇà »óÅÂ¸¦ ÅØ½ºÆ®¿¡ Ç¥½ÃÇØÁÖ´Â ¸Þ¼­µå
         /// </summary>
-        /// <param name="loadState"> ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </param>
+        /// <param name="loadState"> ÁøÇà »óÅÂ </param>
         public void SetLoadStateDescription(string loadState)
         {
             loadStateDesc.text = $"Load{loadState}";
         }
 
         /// <summary>
-        /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ú·ï¿½Æ¾
+        /// ÇöÀç ÁøÇà »óÅÂ¸¦ °ÔÀÌÁö¿¡ Ç¥½ÃÇØÁÖ´Â ÄÚ·çÆ¾
         /// </summary>
-        /// <param name="loadPer"> ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½Æ® </param>
+        /// <param name="loadPer"> ÁøÇà ÆÛ¼¾Æ® </param>
         /// <returns></returns>
         public IEnumerator LoadGaugeUpdate(float loadPer)
         {
-            // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ýºï¿½
+            // µÎ °ªÀÌ ºñ½Á ÇÒ ¶§ ±îÁö ¹Ýº¹
             while (!Mathf.Approximately(loadFillGauge.fillAmount, loadPer))
             {
-                // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+                // ¼±Çü º¸°£À¸·Î °ÔÀÌÁö¸¦ ¼¼ÆÃ
                 loadFillGauge.fillAmount = Mathf.Lerp(loadFillGauge.fillAmount, loadPer, Time.deltaTime * 2);
                 yield return null;
             }

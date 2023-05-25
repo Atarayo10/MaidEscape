@@ -390,7 +390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2794d5866538647902419223602b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   loadStateDesc: {fileID: 1890373611}
   loadFillGauge: {fileID: 2101551284}
 --- !u!1 &419992704
@@ -424,10 +423,6 @@ Transform:
   m_Father: {fileID: 1610327128}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  loadStateDesc: {fileID: 0}
-  loadFillGauge: {fileID: 0}
->>>>>>> sh
 --- !u!1 &460137918
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,13 +553,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Maid Escape
   m_isRightToLeft: 0
-<<<<<<< HEAD
   m_fontAsset: {fileID: 11400000, guid: 037b1ee59bba8254f9676e207b74fe2a, type: 2}
   m_sharedMaterial: {fileID: 745052430329452087, guid: 037b1ee59bba8254f9676e207b74fe2a, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
->>>>>>> sh
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1014,13 +1004,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC0C1\uD0DC"
   m_isRightToLeft: 0
-<<<<<<< HEAD
   m_fontAsset: {fileID: 11400000, guid: 037b1ee59bba8254f9676e207b74fe2a, type: 2}
   m_sharedMaterial: {fileID: 745052430329452087, guid: 037b1ee59bba8254f9676e207b74fe2a, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
->>>>>>> sh
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

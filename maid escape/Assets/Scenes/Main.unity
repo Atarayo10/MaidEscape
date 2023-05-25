@@ -779,9 +779,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8494805efead0d4f828b0d99a101b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   OpWin: {fileID: 0}
-=======
-  BtnWin: {fileID: 1812022710}
-  OpWin: {fileID: 1861745086}
->>>>>>> sh
