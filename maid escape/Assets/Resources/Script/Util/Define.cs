@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace MaidEscape.Define
 {
     public enum IntroPhase { None, Start, ApplicationSetting, Server, StaticData, UserData, Resource, UI, Complete }
-    public enum SceneType { Story, InGame, Loading }
+    public enum SceneType { Story, Lobby, Loading }
 
 }

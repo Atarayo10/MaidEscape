@@ -41,7 +41,7 @@ namespace MaidEscape
         {
             /// 지금은 씬 타입만 들어가있지만 나중에 스테이지 매니저 만들고 하면서
             /// IEnumerator이랑 Action 같은거 첨부시킬예정
-            GameManager.Instance.LoadScene(SceneType.InGame);
+            GameManager.Instance.LoadScene(SceneType.Lobby);
         }
     }
 }
