@@ -24,10 +24,10 @@ public class PlayerControl : MonoBehaviour
 
     int playerLayer, groundLayer, ground2FLayer;
 
-    [SerializeField]bool isSlope;
-    [SerializeField]bool isJump;
-    [SerializeField]bool isGround;
-    [SerializeField]bool isGround2F;
+    [SerializeField] bool isSlope;
+    [SerializeField] bool isJump;
+    [SerializeField] bool isGround;
+    [SerializeField] bool isGround2F;
     [SerializeField] bool isDownJump;
 
     //private int groundlayer;
@@ -57,6 +57,7 @@ public class PlayerControl : MonoBehaviour
         Jump();
         Move();
     }
+
     //캐릭터 좌우 변환
     void Flip()
     {
@@ -65,11 +66,12 @@ public class PlayerControl : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        else if(Horizontal < 0)
+        else if (Horizontal < 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
         }
     }
+
     //경사로 체킹
     void Slope()
     {
@@ -97,7 +99,7 @@ public class PlayerControl : MonoBehaviour
     {
         //발 밑 원형만들어서 땅 접촉 확인
         isGround = Physics2D.OverlapCircle(checkPos.transform.position, 0.2f, LayerMask.GetMask("Ground") | LayerMask.GetMask("Ground2F"));
-        isGround2F = Physics2D.OverlapCircle(checkPos.transform.position, 0.2f,LayerMask.GetMask("Ground2F"));
+        isGround2F = Physics2D.OverlapCircle(checkPos.transform.position, 0.2f, LayerMask.GetMask("Ground2F"));
 
         if (!isGround)
         {
@@ -112,20 +114,20 @@ public class PlayerControl : MonoBehaviour
     void Jump()
     {
         //플레이어 점프
-        if (Input.GetButtonDown("Jump")&&isGround && !isJump)
+        if (Input.GetButtonDown("Jump") && isGround && !isJump)
         {
             isJump = true;
-            rg.AddForce(Vector2.up * jumpPower,ForceMode2D.Impulse);
+            rg.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
         //아래 점프
-        if(Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.S) && isGround2F) 
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.S) && isGround2F)
         {
             Debug.Log("downJump");
             isDownJump = true;
             StartCoroutine(downJump());
             rg.AddForce(Vector2.down * (jumpPower * 1.5f), ForceMode2D.Impulse);
-        } 
-        if(rg.velocity.y > 0)
+        }
+        if (rg.velocity.y > 0)
             Physics2D.IgnoreLayerCollision(playerLayer, groundLayer | ground2FLayer, true);
         else if (!isDownJump)
             Physics2D.IgnoreLayerCollision(playerLayer, groundLayer | ground2FLayer, false);
@@ -136,7 +138,7 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator downJump()
     {
-        
+
         Physics2D.IgnoreLayerCollision(playerLayer, ground2FLayer, true);
         yield return new WaitForSeconds(1f);
         isDownJump = false;
@@ -171,7 +173,7 @@ public class PlayerControl : MonoBehaviour
                 }
             }
             //땅 이동
-            else if(!isSlope && isGround && !isJump)
+            else if (!isSlope && isGround && !isJump)
             {
                 transform.Translate(Vector2.right * maxSpeed * Time.deltaTime * Mathf.Abs(Horizontal));
             }
@@ -183,9 +185,9 @@ public class PlayerControl : MonoBehaviour
         }
         // 버튼 떼면 속도 정지로 만들기
         if (Input.GetButtonUp("Horizontal"))
-            {
-                rg.velocity = new Vector2(rg.velocity.normalized.x * 0.5f, rg.velocity.y);
-            }
+        {
+            rg.velocity = new Vector2(rg.velocity.normalized.x * 0.5f, rg.velocity.y);
+        }
         if (Horizontal == 0)
             rg.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         else

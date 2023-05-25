@@ -382,6 +382,10 @@ PrefabInstance:
       propertyPath: bookPages.Array.data[4]
       value: 
       objectReference: {fileID: 21300000, guid: bba19fbf5c1140d46a4efc07593adb9e, type: 3}
+    - target: {fileID: 11415212, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
+      propertyPath: bookPages.Array.data[5]
+      value: 
+      objectReference: {fileID: 21300000, guid: bba19fbf5c1140d46a4efc07593adb9e, type: 3}
     - target: {fileID: 22433904, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
       propertyPath: m_Pivot.y
       value: 0.22645241
