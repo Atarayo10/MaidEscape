@@ -47,6 +47,7 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Jump();
         Slope();
         Flip();
         GroundCheck();
@@ -54,7 +55,7 @@ public class PlayerControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Jump();
+        //Jump();
         Move();
     }
 
@@ -113,12 +114,15 @@ public class PlayerControl : MonoBehaviour
 
     void Jump()
     {
+        #region JUMP
         //플레이어 점프
-        if (Input.GetButtonDown("Jump") && isGround && !isJump)
+        if (Input.GetKeyDown(KeyCode.Space) && isGround && !isJump)
         {
             isJump = true;
             rg.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
         }
+        #endregion
+        #region DOWNJUMP
         //아래 점프
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.S) && isGround2F)
         {
@@ -127,12 +131,15 @@ public class PlayerControl : MonoBehaviour
             StartCoroutine(downJump());
             rg.AddForce(Vector2.down * (jumpPower * 1.5f), ForceMode2D.Impulse);
         }
+        #endregion
+        #region FLOORJUMP
+        //점프 시 레이어 무시
+        //Debug.Log(rg.velocity.y);
         if (rg.velocity.y > 0)
             Physics2D.IgnoreLayerCollision(playerLayer, groundLayer | ground2FLayer, true);
         else if (!isDownJump)
             Physics2D.IgnoreLayerCollision(playerLayer, groundLayer | ground2FLayer, false);
-        //점프 시 레이어 무시
-        //Debug.Log(rg.velocity.y);
+        #endregion
     }
 
 
@@ -156,20 +163,16 @@ public class PlayerControl : MonoBehaviour
             //경사로 이동
             if (isSlope && isGround && !isJump && angle < maxSlopeAngle)
             {
-                Vector2 t = new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
-                                perp.y * maxSpeed * -Horizontal * Time.deltaTime);
                 rg.velocity = Vector2.zero;
                 if (Horizontal > 0)
                 {
-                    //transform.Translate(new Vector2(perp.x * maxSpeed * -Horizontal * Time.deltaTime,
-                    //    perp.y * maxSpeed * -Horizontal * Time.deltaTime));
-                    transform.Translate(-t);
+                    transform.Translate(new Vector2(perp.x * maxSpeed * -Horizontal * Time.deltaTime,
+                        perp.y * maxSpeed * -Horizontal * Time.deltaTime));
                 }
                 else if (Horizontal < 0)
                 {
-                    transform.Translate(t);
-                    //transform.Translate(new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
-                    //    perp.y * maxSpeed * -Horizontal * Time.deltaTime));
+                    transform.Translate(new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
+                        perp.y * maxSpeed * -Horizontal * Time.deltaTime));
                 }
             }
             //땅 이동

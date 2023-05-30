@@ -8,18 +8,18 @@ namespace MaidEscape
     public class BookManager : MonoBehaviour
     {
         // Public 
-        [Tooltip("´ÙÀ½ ¾ÀÀ¸·Î ³Ñ¾î°¥ ¹öÆ° È°¼ºÈ­ Ã¢")]
+        [Tooltip("ë‹¤ìŒ ì”¬ìœ¼ë¡œ ë„˜ì–´ê°ˆ ë²„íŠ¼ í™œì„±í™” ì°½")]
         public GameObject lastPanel;
 
         // Private
         private Book book;
-        private int pageCount;       // ÆäÀÌÁö °¹¼ö
+        private int pageCount;       // í˜ì´ì§€ ê°¯ìˆ˜
 
         private void Start()
         {
             book = GetComponent<Book>();
 
-            // ÀüÃ¼ ÆäÀÌÁî °¹¼ö¸¦ ÀúÀå
+            // ì „ì²´ í˜ì´ì¦ˆ ê°¯ìˆ˜ë¥¼ ì €ì¥
             pageCount = book.bookPages.Count();
         }
 
@@ -28,19 +28,19 @@ namespace MaidEscape
             if (book.currentPage == pageCount && 
                 lastPanel.activeSelf == false)
             {
-                // ÇöÀç ÆäÀÌÁö°¡ ¸¶Áö¸· ÆäÀÌÁö¶ó¸é
-                // ¾ÀÀ» ³Ñ±æ ¼ö ÀÖ´Â Ã¢À» È°¼ºÈ­
+                // í˜„ì¬ í˜ì´ì§€ê°€ ë§ˆì§€ë§‰ í˜ì´ì§€ë¼ë©´
+                // ì”¬ì„ ë„˜ê¸¸ ìˆ˜ ìˆëŠ” ì°½ì„ í™œì„±í™”
                 lastPanel.SetActive(true);
             }
         }
 
         /// <summary>
-        /// ¾À ÀüÈ¯ ¹öÆ° ¹ÙÀÎµù ¸Ş¼­µå
+        /// ì”¬ ì „í™˜ ë²„íŠ¼ ë°”ì¸ë”© ë©”ì„œë“œ
         /// </summary>
         public void NextScene()
         {
-            /// Áö±İÀº ¾À Å¸ÀÔ¸¸ µé¾î°¡ÀÖÁö¸¸ ³ªÁß¿¡ ½ºÅ×ÀÌÁö ¸Å´ÏÀú ¸¸µé°í ÇÏ¸é¼­
-            /// IEnumeratorÀÌ¶û Action °°Àº°Å Ã·ºÎ½ÃÅ³¿¹Á¤
+            /// ì§€ê¸ˆì€ ì”¬ íƒ€ì…ë§Œ ë“¤ì–´ê°€ìˆì§€ë§Œ ë‚˜ì¤‘ì— ìŠ¤í…Œì´ì§€ ë§¤ë‹ˆì € ë§Œë“¤ê³  í•˜ë©´ì„œ
+            /// IEnumeratorì´ë‘ Action ê°™ì€ê±° ì²¨ë¶€ì‹œí‚¬ì˜ˆì •
             GameManager.Instance.LoadScene(SceneType.Lobby);
         }
     }
