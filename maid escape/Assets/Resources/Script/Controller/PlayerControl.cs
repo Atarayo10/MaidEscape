@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
     float Horizontal;
     float Vertical;
     [SerializeField]private float maxSpeed = 3f;
-    private float jumpPower = 12f;
+    private float jumpPower = 14f;
     private float maxSlopeAngle = 50;
     private const float RAY_DISTANCE = 1.2f;
 
@@ -38,6 +38,12 @@ public class PlayerControl : MonoBehaviour
     void SetUP()
     {
         maxSpeed = playerStat.Speed;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public PlayerStat returnStat()
+    {
+        return playerStat;
     }
 
     private void Awake()

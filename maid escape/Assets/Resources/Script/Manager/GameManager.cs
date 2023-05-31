@@ -10,14 +10,14 @@ using UnityEngine.SceneManagement;
 namespace MaidEscape
 {
     /// <summary>
-    /// °ÔÀÓ¿¡ »ç¿ëµÇ´Â ¸ðµç µ¥ÀÌÅÍ¸¦ °ü¸®ÇÏ´Â Å¬·¡½º
-    /// °ÔÀÓ ¾À º¯°æµî°ú °°Àº Å« Èå¸§À» °ü¸®ÇÏ±âµµ ÇÔ
+    /// ê²Œìž„ì— ì‚¬ìš©ë˜ëŠ” ëª¨ë“  ë°ì´í„°ë¥¼ ê´€ë¦¬í•˜ëŠ” í´ëž˜ìŠ¤
+    /// ê²Œìž„ ì”¬ ë³€ê²½ë“±ê³¼ ê°™ì€ í° íë¦„ì„ ê´€ë¦¬í•˜ê¸°ë„ í•¨
     /// </summary>
     public class GameManager : Singleton<GameManager>
     {
         // Public
         [HideInInspector]
-        public float loadProgress;      // ºÒ·¯¿À´Â ¾ÀÀÇ ÁøÇà»óÅÂ
+        public float loadProgress;      // ë¶ˆëŸ¬ì˜¤ëŠ” ì”¬ì˜ ì§„í–‰ìƒíƒœ
 
         // Private
 
@@ -31,20 +31,20 @@ namespace MaidEscape
                 return;
             }
 
-            // ¾ÀÀÌ º¯°æµÇ´õ¶óµµ ÆÄ±«µÇ¸é ¾ÈµÊ
+            // ì”¬ì´ ë³€ê²½ë˜ë”ë¼ë„ íŒŒê´´ë˜ë©´ ì•ˆë¨
             DontDestroyOnLoad(gameObject);
 
-            // ÇöÀç ¾À¿¡¼­ ÃÊ±â ¼¼ÆÃ ÀÛ¾÷À» ÇÏ´Â ¿ÀºêÁ§Æ®¸¦ Ã£¾Æ ¸Þ¼­µå ½ÇÇà
+            // í˜„ìž¬ ì”¬ì—ì„œ ì´ˆê¸° ì„¸íŒ… ìž‘ì—…ì„ í•˜ëŠ” ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ì•„ ë©”ì„œë“œ ì‹¤í–‰
             var startController = FindObjectOfType<StartController>();
             startController?.Initialize();
         }
 
         /// <summary>
-        /// ¾À ÀüÈ¯À» °üÇÒÇÏ´Â ¸Þ¼­µå
+        /// ì”¬ ì „í™˜ì„ ê´€í• í•˜ëŠ” ë©”ì„œë“œ
         /// </summary>
-        /// <param name="sceneType"> ºÒ·¯¿À°íÀÚ ÇÏ´Â ¾À Å¸ÀÔ </param>
-        /// <param name="loadCoroutine"> ¾À ÁØºñ ÀÛ¾÷ ÄÚ·çÆ¾ </param>
-        /// <param name="loadComplete"> ¾À ·Îµå¸¦ ¸¶¹«¸® ÇÏ¸é¼­ ½ÇÇà ½ÃÅ³ ¸Þ¼­µå </param>
+        /// <param name="sceneType"> ë¶ˆëŸ¬ì˜¤ê³ ìž í•˜ëŠ” ì”¬ íƒ€ìž… </param>
+        /// <param name="loadCoroutine"> ì”¬ ì¤€ë¹„ ìž‘ì—… ì½”ë£¨í‹´ </param>
+        /// <param name="loadComplete"> ì”¬ ë¡œë“œë¥¼ ë§ˆë¬´ë¦¬ í•˜ë©´ì„œ ì‹¤í–‰ ì‹œí‚¬ ë©”ì„œë“œ </param>
         public void LoadScene(SceneType sceneType, IEnumerator loadCoroutine = null, Action loadComplete = null)
         {
             StartCoroutine(WaitForLoad());
@@ -52,29 +52,29 @@ namespace MaidEscape
 
             IEnumerator WaitForLoad()
             {
-                // ÇöÀç ÁøÇà»óÅÂ ÃÊ±âÈ­
+                // í˜„ìž¬ ì§„í–‰ìƒíƒœ ì´ˆê¸°í™”
                 loadProgress = 0;
 
-                // ·Îµù ¾ÀÀ» ¶ç¿ö³õ°í ÀÛ¾÷ÇÏ±â À§ÇØ¼­ ·Îµù ¾ÀÀ» È£Ãâ
+                // ë¡œë”© ì”¬ì„ ë„ì›Œë†“ê³  ìž‘ì—…í•˜ê¸° ìœ„í•´ì„œ ë¡œë”© ì”¬ì„ í˜¸ì¶œ
                 yield return SceneManager.LoadSceneAsync(SceneType.Loading.ToString());
 
-                // ¿øÇÏ´Â ¾ÀÀ» ºÒ·¯¿Â µÚ¿¡ ºñÈ°¼ºÈ­
+                // ì›í•˜ëŠ” ì”¬ì„ ë¶ˆëŸ¬ì˜¨ ë’¤ì— ë¹„í™œì„±í™”
                 var asyncOper = SceneManager.LoadSceneAsync(sceneType.ToString(), LoadSceneMode.Additive);
                 asyncOper.allowSceneActivation = false;
 
                 if (loadCoroutine != null)
                 {
-                    // ¾ÀÀ» ÁØºñÇÏ´Âµ¥ ÇÊ¿äÇÑ ÀÛ¾÷ÀÌ ÀÖ´Ù¸é 
-                    // ÇØ´ç ÀÛ¾÷ÀÌ ¿Ï·áµÉ ¶§ ±îÁö ´ë±â
+                    // ì”¬ì„ ì¤€ë¹„í•˜ëŠ”ë° í•„ìš”í•œ ìž‘ì—…ì´ ìžˆë‹¤ë©´ 
+                    // í•´ë‹¹ ìž‘ì—…ì´ ì™„ë£Œë  ë•Œ ê¹Œì§€ ëŒ€ê¸°
                     yield return StartCoroutine(loadCoroutine);
                 }
 
-                // ¾À È£ÃâÀÌ ³¡³¯ ¶§ ±îÁö ¹Ýº¹
+                // ì”¬ í˜¸ì¶œì´ ëë‚  ë•Œ ê¹Œì§€ ë°˜ë³µ
                 while (!asyncOper.isDone)
                 {
                     if (loadProgress >= .9f)
                     {
-                        // ¾À È£ÃâÀÌ ³¡³ª¸é ¸¶¹«¸® ÀÛ¾÷
+                        // ì”¬ í˜¸ì¶œì´ ëë‚˜ë©´ ë§ˆë¬´ë¦¬ ìž‘ì—…
                         loadProgress = 1f;
 
                         yield return new WaitForSeconds(1f);
@@ -83,19 +83,19 @@ namespace MaidEscape
                     }
                     else
                     {
-                        // ¾À ·ÎµùÀÇ ÁøÇà»óÈ²À» Ç¥½Ã
+                        // ì”¬ ë¡œë”©ì˜ ì§„í–‰ìƒí™©ì„ í‘œì‹œ
                         loadProgress = asyncOper.progress;
                     }
 
-                    // ÄÚ·çÆ¾ ³»¿¡¼­ ¹Ýº¹¹® »ç¿ë ½Ã
-                    // ·ÎÁ÷À» ÇÑ ¹ø ½ÇÇà ÈÄ ¸ÞÀÎ ·ÎÁ÷À» ½ÇÇà ÇÒ ¼ö ÀÖµµ·Ï
+                    // ì½”ë£¨í‹´ ë‚´ì—ì„œ ë°˜ë³µë¬¸ ì‚¬ìš© ì‹œ
+                    // ë¡œì§ì„ í•œ ë²ˆ ì‹¤í–‰ í›„ ë©”ì¸ ë¡œì§ì„ ì‹¤í–‰ í•  ìˆ˜ ìžˆë„ë¡
                     yield return null;
                 }
 
-                // ´ÙÀ½ ¾ÀÀ» ÁØºñ ÇÏ±â À§ÇÑ ÀÛ¾÷À» ¸ðµÎ ³¡³ÂÀ¸¹Ç·Î, ·Îµù¾À ºñÈ°¼ºÈ­
+                // ë‹¤ìŒ ì”¬ì„ ì¤€ë¹„ í•˜ê¸° ìœ„í•œ ìž‘ì—…ì„ ëª¨ë‘ ëëƒˆìœ¼ë¯€ë¡œ, ë¡œë”©ì”¬ ë¹„í™œì„±í™”
                 yield return SceneManager.UnloadSceneAsync(SceneType.Loading.ToString());
 
-                // ÁØºñ ÀÛ¾÷ÀÌ ³¡³ª°í ³­ µÚ¿¡ ½ÇÇà ½ÃÅ³ ÀÛ¾÷ÀÌ ÀÖ´Ù¸é ½ÇÇà
+                // ì¤€ë¹„ ìž‘ì—…ì´ ëë‚˜ê³  ë‚œ ë’¤ì— ì‹¤í–‰ ì‹œí‚¬ ìž‘ì—…ì´ ìžˆë‹¤ë©´ ì‹¤í–‰
                 loadComplete?.Invoke();
             }
 

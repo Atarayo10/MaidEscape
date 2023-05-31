@@ -6970,7 +6970,7 @@ GameObject:
   - component: {fileID: 5455231617831900411}
   - component: {fileID: 5455231617831900408}
   m_Layer: 0
-  m_Name: Map
+  m_Name: LobbyMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

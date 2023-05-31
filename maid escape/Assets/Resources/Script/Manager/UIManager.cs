@@ -9,13 +9,22 @@ using TMPro;
 public class UIManager:MonoBehaviour
 {
     [SerializeField] GameObject stateBoard;
+    #region DESTROY_NOT
+    public Canvas c1, c2;
+    public Camera cam1;
+    public GameObject eve1;
+    [SerializeField] CanvasGroup townLogo;
+    [SerializeField] Text LogoText;
+    #endregion
 
     #region SLOT
     [SerializeField]private ItemData[] itemData = new ItemData[2];
     [SerializeField]private Button[] Buttons = new Button[2];
     [SerializeField]SpriteAtlas spAt;
     [SerializeField]private TextMeshProUGUI InfoText;
+
     public TextMeshProUGUI ADText, ASText, DEFText;
+    public TextMeshProUGUI PHpText, PADText, PASText, PDEFText;
 
     public Image[] InvenSlots = new Image[2];
     public Image[] Slots = new Image[2];
@@ -26,23 +35,55 @@ public class UIManager:MonoBehaviour
     Color color = new Color(255, 255, 255, 255);
     #endregion
 
-    [SerializeField] CanvasGroup townLogo;
+    #region PLAYER_INFO
+    public PlayerStat playerStat;
+    #endregion
+
+
     bool check;
 
     public float fadeTime = 1f; // 페이드 타임 
     float accumTime = 0f;
-
     public static UIManager instance;
     // Start is called before the first frame update
+
+
+    void DontDestroy()
+    {
+        DontDestroyOnLoad(c1);
+        DontDestroyOnLoad(c2);
+        DontDestroyOnLoad(cam1);
+        DontDestroyOnLoad(eve1);
+        DontDestroyOnLoad(townLogo);
+        DontDestroyOnLoad(stateBoard);
+
+    }
+
     void Awake()
     {
+        DontDestroy();
         StopAllCoroutines();
         townLogo.alpha = 0f;
         StartCoroutine(FadeIn());
         StartCoroutine(FadeOut());
+        var data = GameObject.FindObjectOfType<PlayerControl>().returnStat();
+        playerStat = data;
+        if(playerStat == null)
+        {
+            Debug.Log("ㅈ됨");
+        }
 
         Init();
         check = false;
+    }
+
+    public void Fade()
+    {
+
+        StopAllCoroutines();
+        townLogo.alpha = 0f;
+        StartCoroutine(FadeIn());
+        StartCoroutine(FadeOut());
     }
 
     public void stateclick()
@@ -52,7 +93,6 @@ public class UIManager:MonoBehaviour
         if (itemData[0] == null)
         {
             InfoText.text = " 아무것도 없네욤.....";
-            ChangeInFo(0);
         }
         else
         {
@@ -103,38 +143,28 @@ public class UIManager:MonoBehaviour
         InvenSlots[slotnum].color = color;
     }
 
-    //public void PickItem(int itemID, GameObject touch)
-    //{
-    //    if (slot >= 2) { Debug.Log("Full"); return; }
-
-    //    color = new Color(255, 255, 255, 255);
-
-
-    //    touch.SetActive(false);
-    //    DataManager.Instance().LoadDatas();
-    //    var data = DataManager.Instance().dicItemData[itemID];
-    //    Debug.Log("PickUP : " + data.Name);
-    //    id[slot] = data.Id;
-    //    //Color color = s[slot].GetComponent<Color>();
-    //    //color.a = 1f;
-    //    s[slot].sprite = spAt.GetSprite(data.spriteName);
-    //    s[slot].color = color;
-    //    InvenImage[slot].sprite = s[slot].sprite;
-    //    InvenImage[slot].color = color;
-    //    slot++;
-
-    //}
-
+    //가진 아이템 스탯으로 변환 ( 인벤의 템 클릭 시 해당 아이템의 스탯으로 변환 )
     public void ChangeStat(int num)
     {
         AD = itemData[num].AD;
         AS = itemData[num].AS;
         DEF = itemData[num].DEF;
     }
+    //플레이어 정보 스탯으로 텍스트들 변환
+    public void PlayerStatTextSet()
+    {
+        PHpText.text = playerStat.HP.ToString();
+        PADText.text = playerStat.AD.ToString();
+        PASText.text = playerStat.AS.ToString();
+        PDEFText.text = playerStat.DEF.ToString();
+    }
 
+    // 인벤토리 내 텍스트들 해당 아이템의 스탯으로 변환
     public void ChangeInFo(int num)
     {
-        if(itemData[num] == null)
+
+        PlayerStatTextSet();
+        if (itemData[num] == null)
         {
             InfoText.text = " 아무것도 없네욤.....";
             ADText.text = "0".ToString();
