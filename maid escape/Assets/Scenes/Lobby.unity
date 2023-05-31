@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: looping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1422452054656307437, guid: 1c28dea8cc7c90e47833d14e7e86188a, type: 3}
+      propertyPath: spAtlas
+      value: 
+      objectReference: {fileID: 4343727234628468602, guid: c966225fb313ade4e98c0a4450329593, type: 2}
     - target: {fileID: 1422452054656307439, guid: 1c28dea8cc7c90e47833d14e7e86188a, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -412,7 +416,7 @@ GameObject:
   - component: {fileID: 114387403}
   - component: {fileID: 114387402}
   m_Layer: 5
-  m_Name: slot
+  m_Name: slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -843,7 +847,6 @@ GameObject:
   - component: {fileID: 212524412}
   - component: {fileID: 212524411}
   - component: {fileID: 212524416}
-  - component: {fileID: 212524417}
   m_Layer: 6
   m_Name: player
   m_TagString: Player
@@ -995,26 +998,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.99999994, y: 0.99999994}
   m_Direction: 0
---- !u!114 &212524417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212524410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c195753f3865f41499b8c7351353bfe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0000000000000000
-  s:
-  - {fileID: 288658571}
-  - {fileID: 555561008}
-  spAt: {fileID: 4343727234628468602, guid: c966225fb313ade4e98c0a4450329593, type: 2}
-  InvenImage:
-  - {fileID: 1324752287}
-  - {fileID: 335324139}
 --- !u!1 &224408576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,6 +1211,10 @@ PrefabInstance:
       propertyPath: looping
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1422452054656307437, guid: 1c28dea8cc7c90e47833d14e7e86188a, type: 3}
+      propertyPath: spAtlas
+      value: 
+      objectReference: {fileID: 4343727234628468602, guid: c966225fb313ade4e98c0a4450329593, type: 2}
     - target: {fileID: 1422452054656307439, guid: 1c28dea8cc7c90e47833d14e7e86188a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1616,7 +1603,7 @@ GameObject:
   - component: {fileID: 492550116}
   - component: {fileID: 492550115}
   m_Layer: 5
-  m_Name: slot
+  m_Name: slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1693,7 +1680,7 @@ GameObject:
   - component: {fileID: 503330707}
   - component: {fileID: 503330706}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: InfoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1847,6 +1834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 638560354}
   - component: {fileID: 638560353}
+  - component: {fileID: 638560355}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1867,6 +1855,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateBoard: {fileID: 1338710379}
+  spAt: {fileID: 4343727234628468602, guid: c966225fb313ade4e98c0a4450329593, type: 2}
+  InfoText: {fileID: 503330706}
+  InvenSlots:
+  - {fileID: 1324752287}
+  - {fileID: 335324139}
+  Slots:
+  - {fileID: 288658571}
+  - {fileID: 555561008}
   townLogo: {fileID: 224408577}
   fadeTime: 1
 --- !u!4 &638560354
@@ -1884,6 +1880,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &638560355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638560352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c195753f3865f41499b8c7351353bfe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemData: 0000000000000000
 --- !u!1 &645837232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2816,7 +2825,7 @@ MonoBehaviour:
   show: {x: 0, y: 0, z: 0}
   cameraSpeed: 6
   offset: {x: 0, y: 4}
-  limitMinX: -9
+  limitMinX: -8
   limitMinY: -30
   limitMaxX: 125
   limitMaxY: 30
@@ -2833,7 +2842,7 @@ GameObject:
   - component: {fileID: 981892199}
   - component: {fileID: 981892198}
   m_Layer: 5
-  m_Name: slot
+  m_Name: slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4417,7 +4426,7 @@ GameObject:
   - component: {fileID: 2053861022}
   - component: {fileID: 2053861021}
   m_Layer: 5
-  m_Name: slot
+  m_Name: slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4802,6 +4811,10 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1422452054656307437, guid: 1c28dea8cc7c90e47833d14e7e86188a, type: 3}
+      propertyPath: spAtlas
+      value: 
+      objectReference: {fileID: 4343727234628468602, guid: c966225fb313ade4e98c0a4450329593, type: 2}
     - target: {fileID: 1422452054656307439, guid: 1c28dea8cc7c90e47833d14e7e86188a, type: 3}
       propertyPath: m_RootOrder
       value: 6
