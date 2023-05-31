@@ -4,20 +4,41 @@
   "type": "weapon",
   "name": "일반_칼",
   "spriteName": "normal_Sword",
-  "info": "\"지나가는 아이도 다룰 수 있는 조잡한 검입니다\""
+  "info": "어린아이들이 자주 가지고 노는 조잡한 검입니다.",
+  "HP": 0,
+  "AD": 10,
+  "AP": 0,
+  "AS": 1.3,
+  "DEF": 3,
+  "MDEF": 3,
+  "Speed": 0
  },
  {
   "id": 102,
   "type": "weapon",
   "name": "일반_대거",
   "spriteName": "normal_Dagger",
-  "info": "\"지나가는 아이도 다룰 수 있는 조잡한 단검입니다\""
+  "info": "이걸로 무언가를 벨 수 있을 지 의심 가는 단검입니다.",
+  "HP": 0,
+  "AD": 7,
+  "AP": 0,
+  "AS": 1.5,
+  "DEF": 1,
+  "MDEF": 1,
+  "Speed": 1
  },
  {
   "id": 103,
   "type": "weapon",
   "name": "일반_활",
   "spriteName": "normal_Bow",
-  "info": "\"지나가는 아이도 다룰 수 있는 조잡한 활입니다\""
+  "info": "당길 때마다 위험한 소리가 들리는 조잡한 활입니다.",
+  "HP": 0,
+  "AD": 10,
+  "AP": 0,
+  "AS": 1.1,
+  "DEF": 0,
+  "MDEF": 0,
+  "Speed": 0
  }
 ]

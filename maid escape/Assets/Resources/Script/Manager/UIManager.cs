@@ -4,25 +4,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.U2D;
+using TMPro;
 
 public class UIManager:MonoBehaviour
 {
     [SerializeField] GameObject stateBoard;
 
     #region SLOT
-    private ItemData[] itemData = new ItemData[2];
+    [SerializeField]private ItemData[] itemData = new ItemData[2];
+    [SerializeField]private Button[] Buttons = new Button[2];
+    [SerializeField]SpriteAtlas spAt;
+    [SerializeField]private TextMeshProUGUI InfoText;
+    public TextMeshProUGUI ADText, ASText, DEFText;
 
-    [SerializeField] SpriteAtlas spAt;
-    [SerializeField]private Text InfoText;
     public Image[] InvenSlots = new Image[2];
     public Image[] Slots = new Image[2];
 
+
+    [SerializeField]float AD, AS, DEF;
     int slot = 0;
     Color color = new Color(255, 255, 255, 255);
     #endregion
 
     [SerializeField] CanvasGroup townLogo;
-    float fadeSpeed = 0.1f;
     bool check;
 
     public float fadeTime = 1f; // 페이드 타임 
@@ -45,14 +49,15 @@ public class UIManager:MonoBehaviour
     {
         check = !check;
         stateBoard.SetActive(check);
-        //if (itemData[0].Info == null)
-        //{
-        //    InfoText.text = " 아무것도 없네욤.....";
-        //}
-        //else
-        //{
-        //    InfoText.text = itemData[0].Info.ToString();
-        //}
+        if (itemData[0] == null)
+        {
+            InfoText.text = " 아무것도 없네욤.....";
+
+        }
+        else
+        {
+            InfoText.text = itemData[0].Info.ToString();
+        }
 
 
     }
@@ -89,8 +94,7 @@ public class UIManager:MonoBehaviour
         var data = DataManager.Instance().dicItemData[num];
 
         #region DATA_INSERT
-        itemData[slotnum].Name = data.Name;
-        itemData[slotnum].Info = data.Info;
+        itemData[slotnum] = data;
         #endregion
 
         Slots[slotnum].sprite = this.spAt.GetSprite(data.spriteName);
@@ -121,10 +125,28 @@ public class UIManager:MonoBehaviour
 
     //}
 
-
-    void ItemSlotUI()
+    public void ChangeStat(int num)
     {
+        AD = itemData[num].AD;
+        AS = itemData[num].AS;
+        DEF = itemData[num].DEF;
+    }
 
+    public void ChangeInFo(int num)
+    {
+        if(itemData[num] == null)
+        {
+            InfoText.text = " 아무것도 없네욤.....";
+            ADText.text = 0.ToString();
+            ASText.text = 0.ToString();
+            DEFText.text = 0.ToString();
+            return;
+        }
+        ChangeStat(num);
+        InfoText.text = itemData[num].Info.ToString();
+        ADText.text = AD.ToString();
+        ASText.text = AS.ToString();
+        DEFText.text = DEF.ToString();
     }
 
 

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
+
     Collider2D coll;
     Rigidbody2D rg;
     SpriteRenderer spriteRenderer;
@@ -13,7 +14,7 @@ public class PlayerControl : MonoBehaviour
 
     float Horizontal;
     float Vertical;
-    private float maxSpeed = 5f;
+    [SerializeField]private float maxSpeed = 3f;
     private float jumpPower = 12f;
     private float maxSlopeAngle = 50;
     private const float RAY_DISTANCE = 1.2f;
@@ -30,8 +31,19 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] bool isGround2F;
     [SerializeField] bool isDownJump;
 
+    PlayerStat playerStat = new PlayerStat(100, 10.0f, 10.0f, 1.0f, 10.0f, 20.0f, 5.0f);
+
     //private int groundlayer;
 
+    void SetUP()
+    {
+        maxSpeed = playerStat.Speed;
+    }
+
+    private void Awake()
+    {
+        SetUP();
+    }
     // Start is called before the first frame update
     void Start()
     {
