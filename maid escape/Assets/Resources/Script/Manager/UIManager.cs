@@ -52,13 +52,13 @@ public class UIManager:MonoBehaviour
         if (itemData[0] == null)
         {
             InfoText.text = " 아무것도 없네욤.....";
-
+            ChangeInFo(0);
         }
         else
         {
             InfoText.text = itemData[0].Info.ToString();
         }
-
+        ChangeInFo(0);
 
     }
 
@@ -137,9 +137,9 @@ public class UIManager:MonoBehaviour
         if(itemData[num] == null)
         {
             InfoText.text = " 아무것도 없네욤.....";
-            ADText.text = 0.ToString();
-            ASText.text = 0.ToString();
-            DEFText.text = 0.ToString();
+            ADText.text = "0".ToString();
+            ASText.text = "0".ToString();
+            DEFText.text = "0".ToString();
             return;
         }
         ChangeStat(num);
