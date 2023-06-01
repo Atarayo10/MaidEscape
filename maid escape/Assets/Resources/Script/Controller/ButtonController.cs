@@ -10,23 +10,12 @@ using UnityEngine.SceneManagement;
 namespace MaidEscape
 {
     /// <summary>
-    /// ÇöÀç ¾À¿¡ Á¸ÀçÇÏ´Â ¹öÆ°µéÀ» °ü¸®ÇÏ´Â Å¬·¡½º
+    /// í˜„ì¬ ì”¬ì— ì¡´ì¬í•˜ëŠ” ë²„íŠ¼ë“¤ì„ ê´€ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
     /// </summary>
     public class ButtonController : MonoBehaviour
     {
-        #region Public Variable
-
-        #endregion 
-
-        #region Private Variable
-        
-        [SerializeField]
-        private GameObject OpWin;        // ¿É¼Ç Ã¢
-
-        #endregion
-
         /// <summary>
-        /// ÇöÀç ¾À¿¡ Á¸ÀçÇÏ´Â ¹öÆ°À» °ü¸®ÇÏ´Â ¸Ş¼­µå
+        /// í˜„ì¬ ì”¬ì— ì¡´ì¬í•˜ëŠ” ë²„íŠ¼ì„ ê´€ë¦¬í•˜ëŠ” ë©”ì„œë“œ
         /// </summary>
         public void MainButton()
         {
