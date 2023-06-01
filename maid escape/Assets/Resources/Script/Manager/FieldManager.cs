@@ -5,4 +5,3 @@ using UnityEngine;
 public class FieldManager : MonoBehaviour
 {
 }
-asdㅁㄴㅇㅁㄴㅇㄴㅇㅁㅇasdkasdSDASDADSASDㅁㄴㅇㄴㅁ\SD   ㅂ
