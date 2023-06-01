@@ -2,13 +2,13 @@
  {
   "id": 101,
   "type": "weapon",
-  "name": "일반_칼",
+  "name": "일반 칼",
   "spriteName": "normal_Sword",
   "info": "어린아이들이 자주 가지고 노는 조잡한 검입니다.",
   "HP": 0,
   "AD": 10,
   "AP": 0,
-  "AS": 1.3,
+  "AS": 0.3,
   "DEF": 3,
   "MDEF": 3,
   "Speed": 0
@@ -16,13 +16,13 @@
  {
   "id": 102,
   "type": "weapon",
-  "name": "일반_대거",
+  "name": "일반 대거",
   "spriteName": "normal_Dagger",
   "info": "이걸로 무언가를 벨 수 있을 지 의심 가는 단검입니다.",
   "HP": 0,
   "AD": 7,
   "AP": 0,
-  "AS": 1.5,
+  "AS": 0.7,
   "DEF": 1,
   "MDEF": 1,
   "Speed": 1
@@ -30,13 +30,13 @@
  {
   "id": 103,
   "type": "weapon",
-  "name": "일반_활",
+  "name": "일반 활",
   "spriteName": "normal_Bow",
   "info": "당길 때마다 위험한 소리가 들리는 조잡한 활입니다.",
   "HP": 0,
   "AD": 10,
   "AP": 0,
-  "AS": 1.1,
+  "AS": 0.1,
   "DEF": 0,
   "MDEF": 0,
   "Speed": 0

@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
 {
     enum Type { weapon, coin, objects, dropItem, unknown }
     [SerializeField] Type type;
-    [SerializeField] ParticleSystem particle;
+    [SerializeField] ParticleSystem particle, pick;
     [SerializeField]SpriteAtlas spAtlas;
     SpriteRenderer spRender;
 
@@ -119,7 +119,6 @@ public class Item : MonoBehaviour
         {
             Debug.Log("Trigger enter");
             playerInven.PickItem(itemid, this.gameObject);
-            
         }
     }
 

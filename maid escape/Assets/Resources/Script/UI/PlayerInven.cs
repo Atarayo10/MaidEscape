@@ -12,7 +12,7 @@ public class PlayerInven : MonoBehaviour
     [SerializeField]private int[] itemData = new int[2];
     int slot = 0;
     UIManager uiManager;
-
+    [SerializeField] ParticleSystem pick;
     private void Start()
     {
         uiManager = GetComponent<UIManager>();
@@ -23,7 +23,7 @@ public class PlayerInven : MonoBehaviour
         if (slot >= 2) { Debug.Log("Slot Full"); return; }
 
         touch.SetActive(false);;
-
+        pick.Play();
         itemData[slot] = itemID;
         uiManager.InsertItem(itemData[slot], slot);
         slot++;

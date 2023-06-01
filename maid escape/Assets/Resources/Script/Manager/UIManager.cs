@@ -15,6 +15,8 @@ public class UIManager:MonoBehaviour
     public GameObject eve1;
     [SerializeField] CanvasGroup townLogo;
     [SerializeField] Text LogoText;
+    [SerializeField] TextMeshProUGUI nameText;
+
     #endregion
 
     #region SLOT
@@ -154,26 +156,28 @@ public class UIManager:MonoBehaviour
     public void PlayerStatTextSet()
     {
         PHpText.text = playerStat.HP.ToString();
-        PADText.text = playerStat.AD.ToString();
-        PASText.text = playerStat.AS.ToString();
-        PDEFText.text = playerStat.DEF.ToString();
+        PADText.text = (playerStat.AD + AD).ToString();
+        PASText.text = (playerStat.AS +AS).ToString();
+        PDEFText.text = (playerStat.DEF + DEF).ToString();
     }
 
     // 인벤토리 내 텍스트들 해당 아이템의 스탯으로 변환
     public void ChangeInFo(int num)
     {
-
-        PlayerStatTextSet();
         if (itemData[num] == null)
         {
+            PlayerStatTextSet();
             InfoText.text = " 아무것도 없네욤.....";
-            ADText.text = "0".ToString();
-            ASText.text = "0".ToString();
-            DEFText.text = "0".ToString();
+            nameText.text = "맨손";
+            ADText.text = "0";
+            ASText.text = "0";
+            DEFText.text = "0";
             return;
         }
         ChangeStat(num);
+        PlayerStatTextSet();
         InfoText.text = itemData[num].Info.ToString();
+        nameText.text = itemData[num].Name.ToString();
         ADText.text = AD.ToString();
         ASText.text = AS.ToString();
         DEFText.text = DEF.ToString();
