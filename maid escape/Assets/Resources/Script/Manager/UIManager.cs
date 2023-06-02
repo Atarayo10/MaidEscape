@@ -13,9 +13,15 @@ public class UIManager:MonoBehaviour
     public Canvas c1, c2;
     public Camera cam1;
     public GameObject eve1;
-    [SerializeField] CanvasGroup townLogo;
+    //맵 로고
+    [SerializeField] CanvasGroup mapLogo;
     [SerializeField] Text LogoText;
     [SerializeField] TextMeshProUGUI nameText;
+
+    //루팅 UI
+    [SerializeField] GameObject RootBoard;
+    [SerializeField] Image rootImage;
+    [SerializeField] TextMeshProUGUI rootName;
 
     #endregion
 
@@ -56,36 +62,37 @@ public class UIManager:MonoBehaviour
         DontDestroyOnLoad(c2);
         DontDestroyOnLoad(cam1);
         DontDestroyOnLoad(eve1);
-        DontDestroyOnLoad(townLogo);
+        DontDestroyOnLoad(mapLogo);
         DontDestroyOnLoad(stateBoard);
-
+        DontDestroyOnLoad(RootBoard);
     }
 
     void Awake()
     {
+        #region SETUP
         DontDestroy();
         StopAllCoroutines();
-        townLogo.alpha = 0f;
-        StartCoroutine(FadeIn());
-        StartCoroutine(FadeOut());
+        mapLogo.alpha = 0f;
+        StartCoroutine(FadeIn(mapLogo));
+        StartCoroutine(FadeOut(mapLogo));
+        #endregion
         var data = GameObject.FindObjectOfType<PlayerControl>().returnStat();
         playerStat = data;
         if(playerStat == null)
         {
             Debug.Log("ㅈ됨");
         }
-
         Init();
         check = false;
     }
 
-    public void Fade()
+    public void Fade(CanvasGroup fade)
     {
 
         StopAllCoroutines();
-        townLogo.alpha = 0f;
-        StartCoroutine(FadeIn());
-        StartCoroutine(FadeOut());
+        fade.alpha = 0f;
+        StartCoroutine(FadeIn(fade));
+        StartCoroutine(FadeOut(fade));
     }
 
     public void stateclick()
@@ -104,32 +111,38 @@ public class UIManager:MonoBehaviour
 
     }
 
-    IEnumerator FadeIn()
+    IEnumerator FadeIn(CanvasGroup fade)
     {
         yield return new WaitForSeconds(0.2f);
         accumTime = 0f;
         while (accumTime < fadeTime)
         {
-            townLogo.alpha = Mathf.Lerp(0f, 1f, accumTime / fadeTime);
+            fade.alpha = Mathf.Lerp(0f, 1f, accumTime / fadeTime);
             yield return 0;
             accumTime += Time.deltaTime;
         }
-        townLogo.alpha = 1f;
+        fade.alpha = 1f;
 
     }
-    IEnumerator FadeOut()
+    IEnumerator FadeOut(CanvasGroup fade)
     {
         yield return new WaitForSeconds(3.0f);
         accumTime = 0f;
         while (accumTime < fadeTime)
         {
-            townLogo.alpha = Mathf.Lerp(1f, 0f, accumTime / fadeTime);
+            fade.alpha = Mathf.Lerp(1f, 0f, accumTime / fadeTime);
             yield return 0;
             accumTime += Time.deltaTime;
         }
-        townLogo.alpha = 0f;
+        fade.alpha = 0f;
     }
-
+    IEnumerator RootOnOff()
+    {
+        RootBoard.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        RootBoard.SetActive(false);
+    }
+    //플레이어 인벤토리에 있는 정보 가져와 UI에 입력
     public void InsertItem(int num, int slotnum)
     {
         DataManager.Instance().LoadDatas();
@@ -143,6 +156,15 @@ public class UIManager:MonoBehaviour
         Slots[slotnum].color = color;
         InvenSlots[slotnum].sprite = Slots[slotnum].sprite;
         InvenSlots[slotnum].color = color;
+    }
+
+    public void RootUI(int slotnum)
+    {
+        rootImage.sprite = spAt.GetSprite(itemData[slotnum].spriteName);
+        rootName.text = itemData[slotnum].Name.ToString();
+        StopCoroutine(RootOnOff());
+        StartCoroutine(RootOnOff());
+
     }
 
     //가진 아이템 스탯으로 변환 ( 인벤의 템 클릭 시 해당 아이템의 스탯으로 변환 )

@@ -26,6 +26,7 @@ public class PlayerInven : MonoBehaviour
         pick.Play();
         itemData[slot] = itemID;
         uiManager.InsertItem(itemData[slot], slot);
+        uiManager.RootUI(slot);
         slot++;
     }   
 
