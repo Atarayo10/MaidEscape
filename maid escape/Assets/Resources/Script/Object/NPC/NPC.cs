@@ -1,18 +1,28 @@
+using MaidEscape.UIElement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPC : MonoBehaviour
+namespace MaidEscape.Object
 {
+    public class NPC : MonoBehaviour
+    {
+        [SerializeField]
 
-    public void Initialize()
-    { 
-    
+        private void Awake()
+        {
+            ChatBox chatBox = GetComponent<ChatBox>();
+            chatBox.Initialize(this.gameObject.GetComponent<NPC>());
+        }
+
+        public void Initialize()
+        {
+
+        }
+
+        public void NpcUpdate()
+        {
+
+        }
     }
-
-    public void NpcUpdate()
-    { 
-    
-    }
-
 }
