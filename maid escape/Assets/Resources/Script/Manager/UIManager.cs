@@ -6,7 +6,8 @@ using UnityEngine.UI;
 using UnityEngine.U2D;
 using TMPro;
 
-public class UIManager:MonoBehaviour
+
+public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject stateBoard;
     #region DESTROY_NOT
@@ -26,10 +27,10 @@ public class UIManager:MonoBehaviour
     #endregion
 
     #region SLOT
-    [SerializeField]private ItemData[] itemData = new ItemData[2];
-    [SerializeField]private Button[] Buttons = new Button[2];
-    [SerializeField]SpriteAtlas spAt;
-    [SerializeField]private TextMeshProUGUI InfoText;
+    [SerializeField] private ItemData[] itemData = new ItemData[2];
+    [SerializeField] private Button[] Buttons = new Button[2];
+    [SerializeField] SpriteAtlas spAt;
+    [SerializeField] private TextMeshProUGUI InfoText;
 
     public TextMeshProUGUI ADText, ASText, DEFText;
     public TextMeshProUGUI PHpText, PADText, PASText, PDEFText;
@@ -38,7 +39,7 @@ public class UIManager:MonoBehaviour
     public Image[] Slots = new Image[2];
 
 
-    [SerializeField]float AD, AS, DEF;
+    [SerializeField] float AD, AS, DEF;
     int slot = 0;
     Color color = new Color(255, 255, 255, 255);
     #endregion
@@ -71,14 +72,11 @@ public class UIManager:MonoBehaviour
     {
         #region SETUP
         DontDestroy();
-        StopAllCoroutines();
-        mapLogo.alpha = 0f;
-        StartCoroutine(FadeIn(mapLogo));
-        StartCoroutine(FadeOut(mapLogo));
+        Fade(mapLogo);
         #endregion
         var data = GameObject.FindObjectOfType<PlayerControl>().returnStat();
         playerStat = data;
-        if(playerStat == null)
+        if (playerStat == null)
         {
             Debug.Log("ㅈ됨");
         }
@@ -179,7 +177,7 @@ public class UIManager:MonoBehaviour
     {
         PHpText.text = playerStat.HP.ToString();
         PADText.text = (playerStat.AD + AD).ToString();
-        PASText.text = (playerStat.AS +AS).ToString();
+        PASText.text = (playerStat.AS + AS).ToString();
         PDEFText.text = (playerStat.DEF + DEF).ToString();
     }
 
@@ -205,7 +203,11 @@ public class UIManager:MonoBehaviour
         DEFText.text = DEF.ToString();
     }
 
-
+    public void ChangeStageLogo(string text)
+    {
+        LogoText.text = text.ToString();
+        Fade(mapLogo);
+    }
     void Init()
     {
         if (instance == null)

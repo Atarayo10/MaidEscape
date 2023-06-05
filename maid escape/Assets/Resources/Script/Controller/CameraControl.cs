@@ -22,6 +22,12 @@ public class CameraControl : MonoBehaviour
         this.transform.position = FirstPos;    
     }
 
+    public void changeLimit(int _limitMaxX, int _limitMaxY)
+    {
+        limitMaxX = _limitMaxX;
+        limitMaxY = _limitMaxY;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

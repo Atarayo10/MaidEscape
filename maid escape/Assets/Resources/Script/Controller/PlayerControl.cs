@@ -31,7 +31,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] bool isGround2F;
     [SerializeField] bool isDownJump;
 
-    PlayerStat playerStat = new PlayerStat(100, 10.0f, 10.0f, 1.0f, 10.0f, 20.0f, 5.0f);
+    PlayerStat playerStat = new PlayerStat(100, 10.0f, 10.0f, 1.0f, 10.0f, 20.0f, 10.0f);
 
     //private int groundlayer;
 
@@ -182,12 +182,12 @@ public class PlayerControl : MonoBehaviour
             if (isSlope && isGround && !isJump && angle < maxSlopeAngle)
             {
                 rg.velocity = Vector2.zero;
-                if (Horizontal > 0)
+                if (Horizontal > 0 && !isJump)
                 {
                     transform.Translate(new Vector2(perp.x * maxSpeed * -Horizontal * Time.deltaTime,
                         perp.y * maxSpeed * -Horizontal * Time.deltaTime));
                 }
-                else if (Horizontal < 0)
+                else if (Horizontal < 0 && !isJump)
                 {
                     transform.Translate(new Vector2(perp.x * maxSpeed * Horizontal * Time.deltaTime,
                         perp.y * maxSpeed * -Horizontal * Time.deltaTime));
@@ -228,12 +228,9 @@ public class PlayerControl : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.tag == "weapon")
-        {
-
-        }
+        
     }
 
 

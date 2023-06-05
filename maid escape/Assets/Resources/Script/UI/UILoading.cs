@@ -6,27 +6,32 @@ using TMPro;
 using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.U2D;
 
 namespace MaidEscape.UI
 {
-    /// <summary>
-    /// ·Îµù ¾ÀÀ» ÄÁÆ®·Ñ ÇÏ´Â Å¬·¡½º
+        /// <summary>
+    /// ë¡œë”© ì”¬ì„ ì»¨íŠ¸ë¡¤ í•˜ëŠ” í´ë˜ìŠ¤
     /// </summary>
     public class UILoading : MonoBehaviour
     {
         // public
-        public TextMeshProUGUI loadStateDesc;   // ·ÎµùÁßÀÔ´Ï´Ù
-        public Image loadGauge;                 // ·Îµù°ÔÀÌÁö
-        public Image cutScene;                  // ·Îµù ÄÆ¾À
+        public TextMeshProUGUI loadStateDesc;   // ë¡œë”©ì¤‘ì…ë‹ˆë‹¤
+        public Image loadGauge;                 // ë¡œë”©ê²Œì´ì§€
+        public Image cutScene;                  // ë¡œë”© ì»·ì”¬
+        public SpriteAtlas spAtScene;
 
 
         // private
         private static string dot = string.Empty;
-        private static string loadStateDescription = "·ÎµùÁß ÀÔ´Ï´Ù";
+        private static string loadStateDescription = "ë¡œë”©ì¤‘ ì…ë‹ˆë‹¤";
 
         private void Start()
         {
-            // ³ªÁß¿¡ ÄÆ¾Àµé ¸ğ¾Æ¼­ ¾ÆÆ²¶ó½º·Î ¸¸µç´ÙÀ½ ·Îµù¾À ½ÃÀÛÇÒ¶§ ÄÆ½Å ¼³Á¤ÇÏ´Â ÀÛ¾÷
+            int ran = UnityEngine.Random.Range(1, 4);
+            Debug.Log("load"+ ran);
+            cutScene.sprite = this.spAtScene.GetSprite("load" + ran);
+            // ë‚˜ì¤‘ì— ì»·ì”¬ë“¤ ëª¨ì•„ì„œ ì•„í‹€ë¼ìŠ¤ë¡œ ë§Œë“ ë‹¤ìŒ ë¡œë”©ì”¬ ì‹œì‘í• ë•Œ ì»·ì‹  ì„¤ì •í•˜ëŠ” ì‘ì—…
 
         }
 
@@ -34,11 +39,11 @@ namespace MaidEscape.UI
         {
             if (loadGauge.fillAmount >= .88f)
             {
-                // ·Îµù ¿Ï·á
+                // ë¡œë”© ì™„ë£Œ
                 loadGauge.fillAmount = 1f;
             }
 
-            // Mathf.Lerp¸¦ ÀÌ¿ëÇØ¼­ °ªÀ» ÃßÃâ
+            // Mathf.Lerpë¥¼ ì´ìš©í•´ì„œ ê°’ì„ ì¶”ì¶œ
             loadGauge.fillAmount = Mathf.Lerp(loadGauge.fillAmount, 1f, Time.deltaTime * 2f);
 
             if (Time.frameCount % 20 == 0)

@@ -7,15 +7,47 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class Portal : MonoBehaviour
-{
-    private void OnTriggerEnter2D(Collider2D collision)
+namespace MaidEscape
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            Debug.Log("portal : " + SceneType.Map.ToString() + this.transform.parent.name);
-            SceneManager.LoadScene(SceneType.Map.ToString() + this.transform.parent.name);
-        }
-    }
+    public class Portal : MonoBehaviour
+    {
+        UIManager uiManager;
+        CameraControl camControl;
 
+        public enum MapNum
+        {
+            Forest,
+            Tonw,
+            Cave
+        }
+        MapNum map;
+        private void Awake()
+        {
+            DontDestroyOnLoad(this.transform.parent);
+            uiManager = FindObjectOfType<UIManager>();
+            camControl = FindObjectOfType<CameraControl>();
+            map = MapNum.Forest;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                if (this.map == MapNum.Forest)
+                {
+                    string name = "힐베리온의 숲" + System.Environment.NewLine;
+                    GameManager.Instance.LoadScene(SceneType.Map1_1);
+                    uiManager.GetComponent<UIManager>().ChangeStageLogo(name + this.transform.parent.name);
+                    StartCoroutine(LoadPlayer(collision.gameObject));
+                    camControl.changeLimit(140, 40);
+                }
+            }
+        }
+        IEnumerator LoadPlayer(GameObject Player)
+        {
+            yield return new WaitForSeconds(1.5f);
+            Player.gameObject.transform.position = new Vector3(-5, 3, 0);
+        }
+
+    }
 }
