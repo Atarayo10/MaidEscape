@@ -77,10 +77,10 @@ public class PlayerControl : MonoBehaviour
         Move();
     }
 
-    //罹먮┃??醫뚯슦 蹂??
+    //筌?Ŧ????ル슣??癰궰??
     void Flip()
     {
-        //?ㅽ봽?쇱씠??醫뚯슦 蹂寃?
+        //??쎈늄??깆뵠???ル슣??癰궰野?
         if (Horizontal > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -91,7 +91,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    //寃쎌궗濡?泥댄궧
+    //野껋럩沅쀦에?筌ｋ똾沅?
     void Slope()
     {
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, RAY_DISTANCE, LayerMask.GetMask("Ground") | LayerMask.GetMask("Ground2F"));
@@ -116,9 +116,9 @@ public class PlayerControl : MonoBehaviour
 
     void GroundCheck()
     {
-        //諛?諛??먰삎留뚮뱾?댁꽌 ???묒큺 ?뺤씤
-        isGround = Physics2D.OverlapCircle(checkPos.transform.position, 0.2f, LayerMask.GetMask("Ground") | LayerMask.GetMask("Ground2F"));
-        isGround2F = Physics2D.OverlapCircle(checkPos.transform.position, 0.2f, LayerMask.GetMask("Ground2F"));
+        //獄?獄??癒곗굨筌띾슢諭??곴퐣 ???臾믫겫 ?類ㅼ뵥
+        isGround = Physics2D.OverlapCircle(checkPos.transform.position, 0.3f, LayerMask.GetMask("Ground") | LayerMask.GetMask("Ground2F"));
+        isGround2F = Physics2D.OverlapCircle(checkPos.transform.position, 0.3f, LayerMask.GetMask("Ground2F"));
 
         if (!isGround)
         {
@@ -133,7 +133,7 @@ public class PlayerControl : MonoBehaviour
     void Jump()
     {
         #region JUMP
-        //?뚮젅?댁뼱 ?먰봽
+        //???쟿??곷선 ?癒곕늄
         if (Input.GetKeyDown(KeyCode.Space) && isGround && !isJump)
         {
             isJump = true;
@@ -141,7 +141,7 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         #region DOWNJUMP
-        //?꾨옒 ?먰봽
+        //?袁⑥삋 ?癒곕늄
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.S) && isGround2F)
         {
             Debug.Log("downJump");
@@ -151,7 +151,7 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         #region FLOORJUMP
-        //?먰봽 ???덉씠??臾댁떆
+        //?癒곕늄 ????됱뵠???얜똻??
         //Debug.Log(rg.velocity.y);
         if (rg.velocity.y > 0)
             Physics2D.IgnoreLayerCollision(playerLayer, groundLayer | ground2FLayer, true);
@@ -171,14 +171,14 @@ public class PlayerControl : MonoBehaviour
     }
 
 
-    // ?뚮젅?댁뼱 ?대룞
+    // ???쟿??곷선 ??猷?
     void Move()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
         #region MOVE
         if (Horizontal != 0)
         {
-            //寃쎌궗濡??대룞
+            //野껋럩沅쀦에???猷?
             if (isSlope && isGround && !isJump && angle < maxSlopeAngle)
             {
                 rg.velocity = Vector2.zero;
@@ -193,18 +193,18 @@ public class PlayerControl : MonoBehaviour
                         perp.y * maxSpeed * -Horizontal * Time.deltaTime));
                 }
             }
-            //???대룞
+            //????猷?
             else if (!isSlope && isGround && !isJump)
             {
                 transform.Translate(Vector2.right * maxSpeed * Time.deltaTime * Mathf.Abs(Horizontal));
             }
-            //?덉쇅 泥섎━
+            //??됱뇚 筌ｌ꼶??
             else if (!isGround)
             {
                 transform.Translate(Vector2.right * maxSpeed * Time.deltaTime * Mathf.Abs(Horizontal));
             }
         }
-        // 踰꾪듉 ?쇰㈃ ?띾룄 ?뺤?濡?留뚮뱾湲?
+        // 甕곌쑵????겹늺 ??얜즲 ?類?嚥?筌띾슢諭얏묾?
         if (Input.GetButtonUp("Horizontal"))
         {
             rg.velocity = new Vector2(rg.velocity.normalized.x * 0.5f, rg.velocity.y);
@@ -214,12 +214,12 @@ public class PlayerControl : MonoBehaviour
         else
             rg.constraints = RigidbodyConstraints2D.FreezeRotation;
         #endregion
-        //寃쎌궗濡?
+        //野껋럩沅쀦에?
         #region MAXSPEED
-        //?ㅻⅨ履?理쒕? ?띾젰 ?쒗븳
+        //??삘뀲筌?筌ㅼ뮆? ??얠젾 ??쀫립
         if (rg.velocity.x > maxSpeed)
             rg.velocity = new Vector2(maxSpeed, rg.velocity.y);
-        //?쇱そ 理쒕? ?띾젰 ?쒗븳
+        //??긱걹 筌ㅼ뮆? ??얠젾 ??쀫립
         else if (rg.velocity.x < maxSpeed * (-1))
         {
             rg.velocity = new Vector2(maxSpeed * (-1), rg.velocity.y);
