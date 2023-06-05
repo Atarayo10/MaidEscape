@@ -77,10 +77,10 @@ public class PlayerControl : MonoBehaviour
         Move();
     }
 
-    //캐릭터 좌우 변환
+    //罹먮┃??醫뚯슦 蹂??
     void Flip()
     {
-        //스프라이트 좌우 변경
+        //?ㅽ봽?쇱씠??醫뚯슦 蹂寃?
         if (Horizontal > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -91,7 +91,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    //경사로 체킹
+    //寃쎌궗濡?泥댄궧
     void Slope()
     {
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, RAY_DISTANCE, LayerMask.GetMask("Ground") | LayerMask.GetMask("Ground2F"));
@@ -116,7 +116,7 @@ public class PlayerControl : MonoBehaviour
 
     void GroundCheck()
     {
-        //발 밑 원형만들어서 땅 접촉 확인
+        //諛?諛??먰삎留뚮뱾?댁꽌 ???묒큺 ?뺤씤
         isGround = Physics2D.OverlapCircle(checkPos.transform.position, 0.2f, LayerMask.GetMask("Ground") | LayerMask.GetMask("Ground2F"));
         isGround2F = Physics2D.OverlapCircle(checkPos.transform.position, 0.2f, LayerMask.GetMask("Ground2F"));
 
@@ -133,7 +133,7 @@ public class PlayerControl : MonoBehaviour
     void Jump()
     {
         #region JUMP
-        //플레이어 점프
+        //?뚮젅?댁뼱 ?먰봽
         if (Input.GetKeyDown(KeyCode.Space) && isGround && !isJump)
         {
             isJump = true;
@@ -141,7 +141,7 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         #region DOWNJUMP
-        //아래 점프
+        //?꾨옒 ?먰봽
         if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.S) && isGround2F)
         {
             Debug.Log("downJump");
@@ -151,7 +151,7 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
         #region FLOORJUMP
-        //점프 시 레이어 무시
+        //?먰봽 ???덉씠??臾댁떆
         //Debug.Log(rg.velocity.y);
         if (rg.velocity.y > 0)
             Physics2D.IgnoreLayerCollision(playerLayer, groundLayer | ground2FLayer, true);
@@ -171,14 +171,14 @@ public class PlayerControl : MonoBehaviour
     }
 
 
-    // 플레이어 이동
+    // ?뚮젅?댁뼱 ?대룞
     void Move()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
         #region MOVE
         if (Horizontal != 0)
         {
-            //경사로 이동
+            //寃쎌궗濡??대룞
             if (isSlope && isGround && !isJump && angle < maxSlopeAngle)
             {
                 rg.velocity = Vector2.zero;
@@ -193,18 +193,18 @@ public class PlayerControl : MonoBehaviour
                         perp.y * maxSpeed * -Horizontal * Time.deltaTime));
                 }
             }
-            //땅 이동
+            //???대룞
             else if (!isSlope && isGround && !isJump)
             {
                 transform.Translate(Vector2.right * maxSpeed * Time.deltaTime * Mathf.Abs(Horizontal));
             }
-            //예외 처리
+            //?덉쇅 泥섎━
             else if (!isGround)
             {
                 transform.Translate(Vector2.right * maxSpeed * Time.deltaTime * Mathf.Abs(Horizontal));
             }
         }
-        // 버튼 떼면 속도 정지로 만들기
+        // 踰꾪듉 ?쇰㈃ ?띾룄 ?뺤?濡?留뚮뱾湲?
         if (Input.GetButtonUp("Horizontal"))
         {
             rg.velocity = new Vector2(rg.velocity.normalized.x * 0.5f, rg.velocity.y);
@@ -214,12 +214,12 @@ public class PlayerControl : MonoBehaviour
         else
             rg.constraints = RigidbodyConstraints2D.FreezeRotation;
         #endregion
-        //경사로
+        //寃쎌궗濡?
         #region MAXSPEED
-        //오른쪽 최대 속력 제한
+        //?ㅻⅨ履?理쒕? ?띾젰 ?쒗븳
         if (rg.velocity.x > maxSpeed)
             rg.velocity = new Vector2(maxSpeed, rg.velocity.y);
-        //왼쪽 최대 속력 제한
+        //?쇱そ 理쒕? ?띾젰 ?쒗븳
         else if (rg.velocity.x < maxSpeed * (-1))
         {
             rg.velocity = new Vector2(maxSpeed * (-1), rg.velocity.y);
