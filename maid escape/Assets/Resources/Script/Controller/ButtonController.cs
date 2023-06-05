@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 namespace MaidEscape
 {
-    /// <summary>
+    /// <summary>1
     /// 현재 씬에 존재하는 버튼들을 관리하는 클래스
     /// </summary>
     public class ButtonController : MonoBehaviour
