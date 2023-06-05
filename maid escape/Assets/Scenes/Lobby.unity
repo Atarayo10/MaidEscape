@@ -3496,7 +3496,7 @@ MonoBehaviour:
   Buttons:
   - {fileID: 108412711}
   - {fileID: 667354330}
-  spAt: {fileID: 4343727234628468602, guid: c966225fb313ade4e98c0a4450329593, type: 2}
+  spAt: {fileID: 100100200, guid: 5c663d3a9aebced498edd80a2ea81819, type: 3}
   InfoText: {fileID: 1322849790}
   ADText: {fileID: 1494448142}
   ASText: {fileID: 1939236574}
