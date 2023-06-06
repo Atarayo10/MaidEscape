@@ -1,3 +1,4 @@
+using MaidEscape.Define;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -30,6 +31,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] bool isGround;
     [SerializeField] bool isGround2F;
     [SerializeField] bool isDownJump;
+    [SerializeField] bool isInteraction;
 
     PlayerStat playerStat = new PlayerStat(100, 10.0f, 10.0f, 1.0f, 10.0f, 20.0f, 10.0f);
 
@@ -226,6 +228,26 @@ public class PlayerControl : MonoBehaviour
         }
         #endregion
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 만약 플레이어가 Npc에 닿았다면
+        if (collision.gameObject.tag == ObjectType.Npc.ToString())
+        {
+            // 상호작용 시작가능
+            isInteraction = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // 만약 플레이어가 Npc에서 떨어진다면
+        if (collision.gameObject.tag == ObjectType.Npc.ToString())
+        {
+            // 상호작용 종료
+            isInteraction = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
