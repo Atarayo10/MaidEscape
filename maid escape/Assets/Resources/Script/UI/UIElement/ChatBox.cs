@@ -19,8 +19,8 @@ namespace MaidEscape.UIElement
 
         private void Update()
         {
-           Vector3 chatBoxPos =     Camera.main.WorldToScreenPoint(new Vector3(target.transform.position.x + width,
-               target.transform.position.y + height, 0));
+            Vector3 chatBoxPos = Camera.main.WorldToScreenPoint(new Vector3(target.transform.position.x + width,
+                target.transform.position.y + height, 0));
 
             this.transform.position = chatBoxPos;
         }
