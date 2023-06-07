@@ -113,13 +113,18 @@ public class Item : MonoBehaviour
          itemMove(); 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public int getitemId()
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            Debug.Log("Trigger enter");
-            playerInven.PickItem(itemid, this.gameObject);
-        }
+        return itemid;
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+    //    {
+    //        Debug.Log("Trigger enter");
+    //        playerInven.PickItem(itemid, this.gameObject);
+    //    }
+    //}
 
 }

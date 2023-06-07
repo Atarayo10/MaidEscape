@@ -9,18 +9,27 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    #region BOARD
+    [Tooltip("설명서")]
     [SerializeField] GameObject stateBoard;
     [SerializeField] GameObject helpBoard;
+    [SerializeField] GameObject movePG;
+    [SerializeField] GameObject uiPG;
+    [SerializeField] Image movebtt;
+    [SerializeField] Image uibtt;
+    #endregion
     #region DESTROY_NOT
     public Canvas c1, c2;
     public Camera cam1;
     public GameObject eve1;
     //맵 로고
+    [Tooltip("맵 로고")]
     [SerializeField] CanvasGroup mapLogo;
     [SerializeField] Text LogoText;
     [SerializeField] TextMeshProUGUI nameText;
 
     //루팅 UI
+    [Tooltip("루팅 UI")]
     [SerializeField] GameObject RootBoard;
     [SerializeField] Image rootImage;
     [SerializeField] TextMeshProUGUI rootName;
@@ -120,7 +129,28 @@ public class UIManager : MonoBehaviour
         switch (num)
         {
             case 1:
+                Color color = uibtt.color;
+                color.a = 0.5f;
+                uibtt.color = color;
 
+                color = movebtt.color;
+                color.a = 1f;
+                movebtt.color = color;
+
+                uiPG.SetActive(false);
+                movePG.SetActive(true);
+                break;
+            case 2:
+                Color colors = movebtt.color;
+                colors.a = 0.5f;
+                movebtt.color = colors;
+
+                colors = uibtt.color;
+                colors.a = 1f;
+                uibtt.color = colors;
+
+                movePG.SetActive(false);
+                uiPG.SetActive(true);
                 break;
         }
     }

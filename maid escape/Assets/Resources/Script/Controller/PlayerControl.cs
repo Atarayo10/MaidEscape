@@ -32,10 +32,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] bool isGround2F;
     [SerializeField] bool isDownJump;
     [SerializeField] bool isInteraction;
+    [SerializeField] bool isroot;
 
     [SerializeField] UIDialogue uiDialogue;
 
     PlayerStat playerStat = new PlayerStat(100, 10.0f, 10.0f, 1.0f, 10.0f, 20.0f, 10.0f);
+    PlayerInven playerInven;
 
     //private int groundlayer;
 
@@ -61,6 +63,7 @@ public class PlayerControl : MonoBehaviour
         rg = this.GetComponent<Rigidbody2D>();
         coll = checkPos.GetComponent<Collider2D>();
         spriteRenderer = this.GetComponent<SpriteRenderer>();
+        playerInven = GameObject.FindObjectOfType<PlayerInven>();
 
         playerLayer = LayerMask.NameToLayer("Player");
         groundLayer = LayerMask.NameToLayer("Ground");
@@ -246,6 +249,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 만약 플레이어가 Npc에 닿았다면
@@ -268,9 +272,37 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    void pick(Collider2D collision)
+    {
+        Debug.Log("Trigger enter");
+        playerInven.PickItem(collision.GetComponent<Item>().getitemId(), collision.gameObject);
+        isroot = false;
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            isroot = true;
+            pick(collision);
+        }
+    }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (isroot == true && Input.GetKeyDown(KeyCode.X))
+        {
+            pick(collision);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            isroot = false;
+        }
     }
 
 
