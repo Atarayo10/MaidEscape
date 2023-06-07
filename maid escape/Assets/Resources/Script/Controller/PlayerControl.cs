@@ -1,4 +1,5 @@
 using MaidEscape.Define;
+using MaidEscape.UI;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,7 +8,6 @@ using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
-
     Collider2D coll;
     Rigidbody2D rg;
     SpriteRenderer spriteRenderer;
@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
 
     float Horizontal;
     float Vertical;
-    [SerializeField]private float maxSpeed = 3f;
+    [SerializeField] private float maxSpeed = 3f;
     private float jumpPower = 14f;
     private float maxSlopeAngle = 50;
     private const float RAY_DISTANCE = 1.2f;
@@ -32,6 +32,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] bool isGround2F;
     [SerializeField] bool isDownJump;
     [SerializeField] bool isInteraction;
+
+    [SerializeField] UIDialogue uiDialogue;
 
     PlayerStat playerStat = new PlayerStat(100, 10.0f, 10.0f, 1.0f, 10.0f, 20.0f, 10.0f);
 
@@ -52,7 +54,8 @@ public class PlayerControl : MonoBehaviour
     {
         SetUP();
     }
-    // Start is called before the first frame update
+
+
     void Start()
     {
         rg = this.GetComponent<Rigidbody2D>();
@@ -64,13 +67,14 @@ public class PlayerControl : MonoBehaviour
         ground2FLayer = LayerMask.NameToLayer("Ground2F");
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         Jump();
         Slope();
         Flip();
         GroundCheck();
+        CheckInteraction();
     }
 
     private void FixedUpdate()
@@ -230,6 +234,18 @@ public class PlayerControl : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 상호작용을 항시 체크하는 메서드
+    /// </summary>
+    private void CheckInteraction()
+    {
+        // 만약 플레이어 주변에 NPC가 존재한다면
+        if (isInteraction && Input.GetButtonDown("Interaction"))
+        {
+            uiDialogue.OnDialogueBox(isInteraction);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 만약 플레이어가 Npc에 닿았다면
@@ -247,12 +263,14 @@ public class PlayerControl : MonoBehaviour
         {
             // 상호작용 종료
             isInteraction = false;
+
+            uiDialogue.OffDialogueBox(isInteraction);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
     }
 
 
