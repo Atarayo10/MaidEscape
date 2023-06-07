@@ -10,6 +10,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject stateBoard;
+    [SerializeField] GameObject helpBoard;
     #region DESTROY_NOT
     public Canvas c1, c2;
     public Camera cam1;
@@ -49,7 +50,7 @@ public class UIManager : MonoBehaviour
     #endregion
 
 
-    bool check;
+    bool stateCheck, helpCheck;
 
     public float fadeTime = 1f; // 페이드 타임 
     float accumTime = 0f;
@@ -81,7 +82,7 @@ public class UIManager : MonoBehaviour
             Debug.Log("ㅈ됨");
         }
         Init();
-        check = false;
+        stateCheck = false;
     }
 
     public void Fade(CanvasGroup fade)
@@ -95,8 +96,8 @@ public class UIManager : MonoBehaviour
 
     public void stateclick()
     {
-        check = !check;
-        stateBoard.SetActive(check);
+        stateCheck = !stateCheck;
+        stateBoard.SetActive(stateCheck);
         if (itemData[0] == null)
         {
             InfoText.text = " 아무것도 없네욤.....";
@@ -107,6 +108,21 @@ public class UIManager : MonoBehaviour
         }
         ChangeInFo(0);
 
+    }
+
+    public void helpClick()
+    {
+        helpCheck = !helpCheck;
+        helpBoard.SetActive(helpCheck);
+    }
+    public void helpButtonClick(int num)
+    {
+        switch (num)
+        {
+            case 1:
+
+                break;
+        }
     }
 
     IEnumerator FadeIn(CanvasGroup fade)
