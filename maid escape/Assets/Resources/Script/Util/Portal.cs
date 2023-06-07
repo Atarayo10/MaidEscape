@@ -35,9 +35,7 @@ namespace MaidEscape
             {
                 if (this.map == MapNum.Forest)
                 {
-                    string name = "힐베리온의 숲" + System.Environment.NewLine;
                     GameManager.Instance.LoadScene(SceneType.Map1_1);
-                    uiManager.GetComponent<UIManager>().ChangeStageLogo(name + this.transform.parent.name);
                     StartCoroutine(LoadPlayer(collision.gameObject));
                     camControl.changeLimit(140, 40);
                 }
@@ -46,6 +44,8 @@ namespace MaidEscape
         IEnumerator LoadPlayer(GameObject Player)
         {
             yield return new WaitForSeconds(1.5f);
+            string name = "힐베리온의 숲" + System.Environment.NewLine;
+            uiManager.GetComponent<UIManager>().ChangeStageLogo(name + this.transform.parent.name);
             Player.gameObject.transform.position = new Vector3(-5, 3, 0);
         }
 
