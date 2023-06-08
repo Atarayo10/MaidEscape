@@ -1,25 +1,21 @@
 using MaidEscape.Object;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MaidEscape.UIElement
 {
-    public class ChatBox : MonoBehaviour
+    public class HpBar : MonoBehaviour
     {
-        [SerializeField]
-        private float width;
-
         [SerializeField]
         private float height;
 
-        private NPC target;             // 따라다닐 타겟
+        private PlayerControl target;             // 따라 다닐 타겟
         private RectTransform rect;
 
         private void Update()
         {
-            Vector3 chatBoxPos = Camera.main.WorldToScreenPoint(new Vector3(target.transform.position.x + width,
+            Vector3 chatBoxPos = Camera.main.WorldToScreenPoint(new Vector3(target.transform.position.x,
                 target.transform.position.y + height, 0));
 
             rect.position = chatBoxPos;
@@ -28,7 +24,7 @@ namespace MaidEscape.UIElement
         /// <summary>
         /// ChatBox의 초기 세팅을 담당하는 메서드
         /// </summary>
-        public void Initialize(NPC target)
+        public void Initialize(PlayerControl target)
         {
             this.target = target;
             transform.localScale = Vector2.one;

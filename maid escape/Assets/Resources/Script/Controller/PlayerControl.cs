@@ -1,5 +1,6 @@
 using MaidEscape.Define;
 using MaidEscape.UI;
+using MaidEscape.UIElement;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,6 +36,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] bool isroot;
 
     [SerializeField] UIDialogue uiDialogue;
+    [SerializeField] HpBar hpBar;
 
     PlayerStat playerStat = new PlayerStat(100, 10.0f, 10.0f, 1.0f, 10.0f, 20.0f, 10.0f);
     PlayerInven playerInven;
@@ -43,6 +45,7 @@ public class PlayerControl : MonoBehaviour
 
     void SetUP()
     {
+        hpBar.Initialize(this);
         maxSpeed = playerStat.Speed;
         DontDestroyOnLoad(this.gameObject);
     }
